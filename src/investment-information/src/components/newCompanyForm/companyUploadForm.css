@@ -1,0 +1,14 @@
+.info-upload-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-upload-form-container input, .info-upload-form-container button {
+    margin: 5px 0;
+}
+
+.info-upload-form-container label {
+    margin-right: 10px;
+}
