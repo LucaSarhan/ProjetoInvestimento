@@ -1,5 +1,6 @@
-import React from 'react';
-import './CompanyContainer.css';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, Button, Card } from 'react-bootstrap';
 
 function normalizeCompanyName(name) {
   return name
@@ -8,25 +9,46 @@ function normalizeCompanyName(name) {
       .toLowerCase(); // Then convert to lowercase
 }
 
-export function CompanyContainer({ companyName, intrinsicValue, priceEarningsRatio }) {
-    const normalizedCompanyName = normalizeCompanyName(companyName);
-    return (
-        <div className="company-container-item">
-          <button>Edit</button>
-          <button>Delete</button>
-          <h2>{companyName}</h2>
-          <p>
-            <span className="value-label">Intrinsic Value</span>
-            <span>: </span>
-            <span id={`${normalizedCompanyName}IV`} className="value">{intrinsicValue}</span>
-          </p>
-          <p>
-             <span className="value-label">Price to Earnings Ratio</span> 
-            <span>: </span>
-            <span id={`${normalizedCompanyName}PE`} className="value">{priceEarningsRatio}</span>
-          </p>
-        </div>
-    )
+export function CompanyContainer({ companyName, intrinsicValue, priceEarningsRatio, additionalInfo }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
+  const normalizedCompanyName = normalizeCompanyName(companyName);
+
+  return (
+    <>
+    <Card onClick={handleShow} className="container-fluid p-0" >
+      <Card.Body className="shadow text-center bg-secondary rounded"> 
+        <Card.Title className="mb-3">{companyName}</Card.Title>
+        <Card.Text>
+          <p id={`${normalizedCompanyName}IV`}><strong>Intrinsic Value:</strong> {intrinsicValue}</p>
+          <p id={`${normalizedCompanyName}PE`}><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</p>
+        </Card.Text>
+      </Card.Body>
+    </Card>
+      <Modal show={showModal} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>{companyName} - More Information</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p><strong>Intrinsic Value:</strong> {intrinsicValue}</p>
+          <p><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</p>
+          <p><strong>Additional Info:</strong> {additionalInfo}</p>
+          {/* Add more information or components as needed */}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() =>{/*Edit logic here*/}}>
+            Edit
+          </Button>
+          <Button variant="primary" onClick={() =>{/*Delete logic here*/}}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      </>
+  );
 }
 
 export default CompanyContainer;

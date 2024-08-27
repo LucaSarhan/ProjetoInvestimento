@@ -1,19 +1,21 @@
 import React from 'react';
-import './Dashboard.css';
 import CompanyContainer from '../Company-Container/CompanyContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Dashboard({ companies }) {
   return (
-    <div className="dashboard-container">
-      <h1>Dashboard</h1>
-      <div className="dashboard-grid">
+    <div>
+      <h1 className="text-center my-4">Dashboard</h1>
+      <div className="row row-cols-1 row-cols-md-2 g-4 mx-1">
         {companies.map((company, index) => (
-          <CompanyContainer 
-            key={index} 
-            companyName={company.companyName} 
-            intrinsicValue={company.intrinsicValue} 
-            priceEarningsRatio={company.priceEarningsRatio} 
-          />
+          <div className="col" key={index}>
+            <CompanyContainer 
+              companyName={company.companyName} 
+              intrinsicValue={company.intrinsicValue} 
+              priceEarningsRatio={company.priceEarningsRatio}
+              onClick={CompanyContainer.handleShow}
+            />
+          </div>
         ))}
       </div>
     </div>
