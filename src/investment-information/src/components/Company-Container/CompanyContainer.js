@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal, Button, Card } from 'react-bootstrap';
+import { Modal, Button, Card, ListGroup } from 'react-bootstrap';
 
 function normalizeCompanyName(name) {
   return name
@@ -23,8 +23,8 @@ export function CompanyContainer({ companyName, intrinsicValue, priceEarningsRat
       <Card.Body className="shadow text-center bg-secondary rounded"> 
         <Card.Title className="mb-3">{companyName}</Card.Title>
         <Card.Text>
-          <p id={`${normalizedCompanyName}IV`}><strong>Intrinsic Value:</strong> {intrinsicValue}</p>
-          <p id={`${normalizedCompanyName}PE`}><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</p>
+          <ListGroup.Item id={`${normalizedCompanyName}IV`}><strong>Intrinsic Value:</strong> {intrinsicValue}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}PE`}><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</ListGroup.Item>
         </Card.Text>
       </Card.Body>
     </Card>
@@ -33,10 +33,13 @@ export function CompanyContainer({ companyName, intrinsicValue, priceEarningsRat
           <Modal.Title>{companyName} - More Information</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p><strong>Intrinsic Value:</strong> {intrinsicValue}</p>
-          <p><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</p>
-          <p><strong>Additional Info:</strong> {additionalInfo}</p>
-          {/* Add more information or components as needed */}
+          <ListGroup.Item><strong>Intrinsic Value:</strong> {intrinsicValue}</ListGroup.Item>
+          <ListGroup.Item><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</ListGroup.Item>
+          <ListGroup.Item><strong>Divend Payout:</strong> {additionalInfo}</ListGroup.Item>
+          <ListGroup.Item><strong>Profit:</strong> {additionalInfo}</ListGroup.Item>
+          <ListGroup.Item><strong>Total Revenue:</strong> {additionalInfo}</ListGroup.Item>
+          <ListGroup.Item><strong>Total Assets:</strong> {additionalInfo}</ListGroup.Item>
+          <ListGroup.Item><strong>Total Liabilities:</strong> {additionalInfo}</ListGroup.Item>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() =>{/*Edit logic here*/}}>

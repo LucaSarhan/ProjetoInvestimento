@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './companyUploadForm.css';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 export function CompanyUploadForm({ addCompany }) {
     const [formData, setFormData] = useState({
@@ -28,35 +28,50 @@ export function CompanyUploadForm({ addCompany }) {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit} className='info-upload-form-container'>
-                <label htmlFor="companyName">Company Name: </label>
-                <input
-                    type="text"
-                    id="companyName"
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                />
-                <label htmlFor="intrinsicValue"> Intrinsic Value: </label>
-                <input
-                    type="number"
-                    id="intrinsicValue"
-                    name="intrinsicValue"
-                    value={formData.intrinsicValue}
-                    onChange={handleChange}
-                />
-                <label htmlFor="priceEarningsRatio"> Price to Earnings Ratio: </label>
-                <input
-                    type="number"
-                    id="priceEarningsRatio"
-                    name="priceEarningsRatio"
-                    value={formData.priceEarningsRatio}
-                    onChange={handleChange}
-                />
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <Container className="d-flex justify-content-center">
+            <Form onSubmit={handleSubmit} className="w-50">
+                <Row>
+                    <Form.Group controlId="companyName">
+                        <Form.Label>Company Name:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="companyName"
+                            value={formData.companyName}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="intrinsicValue">
+                        <Form.Label>Intrinsic Value:</Form.Label>
+                        <Form.Control
+                            type="number"
+                            name="intrinsicValue"
+                            value={formData.intrinsicValue}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="priceEarningsRatio">
+                        <Form.Label>Price to Earnings Ratio:</Form.Label>
+                        <Form.Control
+                            type="number"
+                            name="priceEarningsRatio"
+                            value={formData.priceEarningsRatio}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row className="justify-content-center">
+                    <Col xs="auto">
+                        <Button variant="primary" type="submit" className="mt-3">
+                            Submit
+                        </Button>
+                    </Col>
+                </Row>
+            </Form>
+        </Container>
     );
 }
 
