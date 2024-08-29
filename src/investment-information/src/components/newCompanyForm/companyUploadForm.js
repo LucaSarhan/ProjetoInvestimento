@@ -5,7 +5,12 @@ export function CompanyUploadForm({ addCompany }) {
     const [formData, setFormData] = useState({
         companyName: '',
         intrinsicValue: '',
-        priceEarningsRatio: ''
+        priceEarningsRatio: '',
+        dividendPayout: '',
+        profit: '',
+        totalRevenue: '',
+        totalAssets: '',
+        totalLiabilities: '',
     });
 
     const handleChange = (e) => {
@@ -17,13 +22,27 @@ export function CompanyUploadForm({ addCompany }) {
     };
 
     const handleSubmit = (e) => {
-        if (formData.companyName === '' || formData.intrinsicValue === '' || formData.priceEarningsRatio === '') {
+        if (formData.companyName === '' || 
+            formData.intrinsicValue === '' || 
+            formData.priceEarningsRatio === '' || 
+            formData.dividendPayout === '' || 
+            formData.profit === '' || 
+            formData.totalRevenue === '' || 
+            formData.totalAssets === '' || 
+            formData.totalLiabilities === '') {
             alert('Please fill all the fields');
             return;
         } 
         e.preventDefault();
         addCompany(formData);
-        setFormData({ companyName: '', intrinsicValue: '', priceEarningsRatio: '' });
+        setFormData({ companyName: '', 
+            intrinsicValue: '', 
+            priceEarningsRatio: '', 
+            dividendPayout: '', 
+            profit: '', 
+            totalRevenue: '', 
+            totalAssets: '', 
+            totalLiabilities: '' });
         console.log(formData);
     };
 
@@ -59,6 +78,56 @@ export function CompanyUploadForm({ addCompany }) {
                             type="number"
                             name="priceEarningsRatio"
                             value={formData.priceEarningsRatio}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="dividendPayout">
+                        <Form.Label>Dividend Payout:</Form.Label>
+                        <Form.Control
+                            name="dividendPayout"
+                            value={formData.dividendPayout}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="profit">
+                        <Form.Label>Profit:</Form.Label>
+                        <Form.Control
+                            name="profit"
+                            value={formData.profit}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="totalRevenue">
+                        <Form.Label>Total Revenue:</Form.Label>
+                        <Form.Control
+                            name="totalRevenue"
+                            value={formData.totalRevenue}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="totalAssets">
+                        <Form.Label>Total Assets:</Form.Label>
+                        <Form.Control
+                            name="totalAssets"
+                            value={formData.totalAssets}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="totalLiabilities">
+                        <Form.Label>Total Liabilities:</Form.Label>
+                        <Form.Control
+                            name="totalLiabilities"
+                            value={formData.totalLiabilities}
                             onChange={handleChange}
                         />
                     </Form.Group>

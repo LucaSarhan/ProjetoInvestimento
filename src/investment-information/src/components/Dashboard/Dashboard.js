@@ -14,6 +14,11 @@ function Dashboard({ companies }) {
               companyName={company.companyName} 
               intrinsicValue={company.intrinsicValue} 
               priceEarningsRatio={company.priceEarningsRatio}
+              dividendPayout={company.dividendPayout}
+              profit={company.profit}
+              totalRevenue={company.totalRevenue}
+              totalAssets={company.totalAssets}
+              totalLiabilities={company.totalLiabilities}
               onClick={CompanyContainer.handleShow}
             />
           </Col>

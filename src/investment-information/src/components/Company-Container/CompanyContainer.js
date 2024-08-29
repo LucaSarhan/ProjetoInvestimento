@@ -9,7 +9,16 @@ function normalizeCompanyName(name) {
       .toLowerCase(); // Then convert to lowercase
 }
 
-export function CompanyContainer({ companyName, intrinsicValue, priceEarningsRatio, additionalInfo }) {
+export function CompanyContainer({ 
+    companyName, 
+    intrinsicValue, 
+    priceEarningsRatio, 
+    dividendPayout, 
+    profit, 
+    totalRevenue, 
+    totalAssets, 
+    totalLiabilities 
+  }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);
@@ -30,16 +39,16 @@ export function CompanyContainer({ companyName, intrinsicValue, priceEarningsRat
     </Card>
       <Modal show={showModal} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{companyName} - More Information</Modal.Title>
+          <Modal.Title>{companyName} - Metrics</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ListGroup.Item><strong>Intrinsic Value:</strong> {intrinsicValue}</ListGroup.Item>
-          <ListGroup.Item><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</ListGroup.Item>
-          <ListGroup.Item><strong>Divend Payout:</strong> {additionalInfo}</ListGroup.Item>
-          <ListGroup.Item><strong>Profit:</strong> {additionalInfo}</ListGroup.Item>
-          <ListGroup.Item><strong>Total Revenue:</strong> {additionalInfo}</ListGroup.Item>
-          <ListGroup.Item><strong>Total Assets:</strong> {additionalInfo}</ListGroup.Item>
-          <ListGroup.Item><strong>Total Liabilities:</strong> {additionalInfo}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}IV`}><strong>Intrinsic Value:</strong> {intrinsicValue}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}PE`}><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}DP`}><strong>Divend Payout:</strong> {dividendPayout}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}P`}><strong>Profit:</strong> {profit}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}TR`}><strong>Total Revenue:</strong> {totalRevenue}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}TA`}><strong>Total Assets:</strong> {totalAssets}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}TL`}><strong>Total Liabilities:</strong> {totalLiabilities}</ListGroup.Item>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() =>{/*Edit logic here*/}}>
