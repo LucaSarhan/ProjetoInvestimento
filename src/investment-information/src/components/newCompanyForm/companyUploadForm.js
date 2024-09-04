@@ -6,7 +6,8 @@ export function CompanyUploadForm({ addCompany }) {
         companyName: '',
         intrinsicValue: '',
         priceEarningsRatio: '',
-        dividendPayout: '',
+        dividendYield: '',
+        dividendHistory: '',
         profit: '',
         totalRevenue: '',
         totalAssets: '',
@@ -24,8 +25,9 @@ export function CompanyUploadForm({ addCompany }) {
     const handleSubmit = (e) => {
         if (formData.companyName === '' || 
             formData.intrinsicValue === '' || 
-            formData.priceEarningsRatio === '' || 
-            formData.dividendPayout === '' || 
+            formData.priceEarningsRatio === '' ||
+            formData.dividendYield === '' ||
+            formData.dividendHistory === '' ||
             formData.profit === '' || 
             formData.totalRevenue === '' || 
             formData.totalAssets === '' || 
@@ -37,8 +39,9 @@ export function CompanyUploadForm({ addCompany }) {
         addCompany(formData);
         setFormData({ companyName: '', 
             intrinsicValue: '', 
-            priceEarningsRatio: '', 
-            dividendPayout: '', 
+            priceEarningsRatio: '',
+            dividendYield: '',
+            dividendHistory: '',
             profit: '', 
             totalRevenue: '', 
             totalAssets: '', 
@@ -83,11 +86,21 @@ export function CompanyUploadForm({ addCompany }) {
                     </Form.Group>
                 </Row>
                 <Row>
-                    <Form.Group controlId="dividendPayout">
-                        <Form.Label>Dividend Payout:</Form.Label>
+                    <Form.Group controlId="dividendYield">
+                        <Form.Label>Dividend Yield:</Form.Label>
                         <Form.Control
-                            name="dividendPayout"
-                            value={formData.dividendPayout}
+                            name="dividendYield"
+                            value={formData.dividendYield}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="dividendHistory">
+                        <Form.Label>Dividend History:</Form.Label>
+                        <Form.Control
+                            name="dividendHistory"
+                            value={formData.dividendHistory}
                             onChange={handleChange}
                         />
                     </Form.Group>

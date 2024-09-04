@@ -13,7 +13,8 @@ export function CompanyContainer({
     companyName, 
     intrinsicValue, 
     priceEarningsRatio, 
-    dividendPayout, 
+    dividendYield,
+    dividendHistory,
     profit, 
     totalRevenue, 
     totalAssets, 
@@ -44,7 +45,8 @@ export function CompanyContainer({
         <Modal.Body>
           <ListGroup.Item id={`${normalizedCompanyName}IV`}><strong>Intrinsic Value:</strong> {intrinsicValue}</ListGroup.Item>
           <ListGroup.Item id={`${normalizedCompanyName}PE`}><strong>Price to Earnings Ratio:</strong> {priceEarningsRatio}</ListGroup.Item>
-          <ListGroup.Item id={`${normalizedCompanyName}DP`}><strong>Divend Payout:</strong> {dividendPayout}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}DY`}><strong>Divend Yield:</strong> {dividendYield}</ListGroup.Item>
+          <ListGroup.Item id={`${normalizedCompanyName}DH`}><strong>Dividend History:</strong> {dividendHistory}</ListGroup.Item>
           <ListGroup.Item id={`${normalizedCompanyName}P`}><strong>Profit:</strong> {profit}</ListGroup.Item>
           <ListGroup.Item id={`${normalizedCompanyName}TR`}><strong>Total Revenue:</strong> {totalRevenue}</ListGroup.Item>
           <ListGroup.Item id={`${normalizedCompanyName}TA`}><strong>Total Assets:</strong> {totalAssets}</ListGroup.Item>

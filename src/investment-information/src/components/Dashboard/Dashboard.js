@@ -14,7 +14,8 @@ function Dashboard({ companies }) {
               companyName={company.companyName} 
               intrinsicValue={company.intrinsicValue} 
               priceEarningsRatio={company.priceEarningsRatio}
-              dividendPayout={company.dividendPayout}
+              dividendYield={company.dividendYield}
+              dividendHistory={company.dividendHistory}
               profit={company.profit}
               totalRevenue={company.totalRevenue}
               totalAssets={company.totalAssets}
