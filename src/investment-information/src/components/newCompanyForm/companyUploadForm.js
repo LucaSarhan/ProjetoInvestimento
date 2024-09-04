@@ -22,32 +22,39 @@ export function CompanyUploadForm({ addCompany }) {
         });
     };
 
-    const handleSubmit = (e) => {
-        if (formData.companyName === '' || 
-            formData.intrinsicValue === '' || 
-            formData.priceEarningsRatio === '' ||
-            formData.dividendYield === '' ||
-            formData.dividendHistory === '' ||
-            formData.profit === '' || 
-            formData.totalRevenue === '' || 
-            formData.totalAssets === '' || 
-            formData.totalLiabilities === '') {
-            alert('Please fill all the fields');
-            return;
-        } 
-        e.preventDefault();
-        addCompany(formData);
-        setFormData({ companyName: '', 
-            intrinsicValue: '', 
-            priceEarningsRatio: '',
-            dividendYield: '',
-            dividendHistory: '',
-            profit: '', 
-            totalRevenue: '', 
-            totalAssets: '', 
-            totalLiabilities: '' });
-        console.log(formData);
-    };
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+        const response = await fetch('http://localhost:5000/api/company', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+            alert('Company data saved successfully');
+            setFormData({
+                companyName: '',
+                intrinsicValue: '',
+                priceEarningsRatio: '',
+                dividendYield: '',
+                dividendHistory: '',
+                profit: '',
+                totalRevenue: '',
+                totalAssets: '',
+                totalLiabilities: '',
+            });
+        } else {
+            alert('Failed to save company data');
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Error submitting form');
+    }
+};
 
     return (
         <Container className="d-flex justify-content-center">

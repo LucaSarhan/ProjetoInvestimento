@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CompanyContainer from '../Company-Container/CompanyContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row } from 'react-bootstrap';
 
-function Dashboard({ companies }) {
+function Dashboard() {
+  const [companies, setCompanies] = useState([]);
+
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/companies');
+        const data = await response.json();
+        console.log(data);  // Add this line to see the data fetched
+        setCompanies(data);
+      } catch (error) {
+        console.error('Error fetching companies:', error);
+      }
+    };
+  
+    fetchCompanies();
+  }, []);  
+
   return (
     <Col>
       <h1 className="text-center my-4">Dashboard</h1>
@@ -11,15 +28,15 @@ function Dashboard({ companies }) {
         {companies.map((company, index) => (
           <Col key={index}>
             <CompanyContainer 
-              companyName={company.companyName} 
-              intrinsicValue={company.intrinsicValue} 
-              priceEarningsRatio={company.priceEarningsRatio}
-              dividendYield={company.dividendYield}
-              dividendHistory={company.dividendHistory}
-              profit={company.profit}
-              totalRevenue={company.totalRevenue}
-              totalAssets={company.totalAssets}
-              totalLiabilities={company.totalLiabilities}
+              companyName={company.company_name} 
+              intrinsicValue={company.intrinsic_value} 
+              priceEarningsRatio={company.price_earnings_ratio}
+              dividendYield={company.dividend_yield}
+              dividendHistory={company.dividend_history}
+              profit={company.profit} 
+              totalRevenue={company.total_revenue} 
+              totalAssets={company.total_assets} 
+              totalLiabilities={company.total_liabilities}
               onClick={CompanyContainer.handleShow}
             />
           </Col>
