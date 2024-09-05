@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CompanyContainer from '../Company-Container/CompanyContainer';
+import CompanyContainer from '../CompanyContainer/CompanyContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row } from 'react-bootstrap';
 

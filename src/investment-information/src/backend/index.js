@@ -68,7 +68,7 @@ app.post('/api/company', async (req, res) => {
 });
 
 // Get all companies
-app.get('/api/companies', async (req, res) => {
+app.get('/api/companies', async (res) => {
     try {
         const result = await pool.query('SELECT * FROM company');
         res.status(200).json(result.rows);  // Send all rows as JSON
@@ -77,6 +77,31 @@ app.get('/api/companies', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch companies' });
     }
 });
+
+// Updating company information
+app.put('/api/companies/:id', async (req, res) => {
+    try {
+      const updatedCompany = await Company.findByIdAndUpdate(
+        req.params.id,
+        { $set: req.body }, // Update the fields sent in the request body
+        { new: true }
+      );
+      res.status(200).json(updatedCompany); // Send updated data as response
+    } catch (error) {
+      res.status(500).json({ message: 'Error updating company' });
+    }
+  });
+
+// Deleting a company
+app.delete('/api/companies/:id', async (req, res) => {
+    try {
+      await Company.findByIdAndDelete(req.params.id); // Delete the company by ID
+      res.status(200).json({ message: 'Company deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ message: 'Error deleting company' });
+    }
+  });
+  
 
 // Start the server
 const port = process.env.PORT || 5000;
