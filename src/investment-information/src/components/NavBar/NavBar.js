@@ -13,6 +13,7 @@ function NavBar() {
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/Dashboard">Dashboard</Nav.Link>
             <Nav.Link as={Link} to="/InformationUpload">Information Upload</Nav.Link>
+            <Nav.Link as={Link} to="/Chatbot">Chatbot</Nav.Link>
             <NavDropdown title="Dropdown" id="navbarScrollingDropdown">
               <NavDropdown.Item as={Link} to="#action1">Action</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="#action2">Another action</NavDropdown.Item>
