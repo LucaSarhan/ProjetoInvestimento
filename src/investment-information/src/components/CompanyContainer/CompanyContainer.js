@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, ListGroup } from 'react-bootstrap';
-import CompanyModal from '../CompanyModal/CompanyModal';
+import CompanyModal from '../CompanyModal/CompanyModal.js';
 
 export function CompanyContainer({
   companyName,
@@ -53,10 +53,10 @@ export function CompanyContainer({
       <Card onClick={handleShow} className="container-fluid p-0">
         <Card.Body className="shadow text-center bg-secondary rounded">
           <Card.Title className="mb-3">{companyData.companyName}</Card.Title>
-          <Card.Text>
+          <div>
             <ListGroup.Item><strong>Intrinsic Value:</strong> {companyData.intrinsicValue}</ListGroup.Item>
             <ListGroup.Item><strong>Price to Earnings Ratio:</strong> {companyData.priceEarningsRatio}</ListGroup.Item>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
 

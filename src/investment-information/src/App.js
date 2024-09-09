@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from './components/NavBar/NavBar';
-import Dashboard from './components/Dashboard/Dashboard';
-import InformationUpload from './components/InformationUpload/InformationUpload';
-import HomePage from './components/HomePage/HomePage';
-import CompanyModal from './components/CompanyModal/CompanyModal';
+import NavBar from './components/NavBar/NavBar.js';
+import Dashboard from './components/Dashboard/Dashboard.js';
+import InformationUpload from './components/InformationUpload/InformationUpload.js';
+import HomePage from './components/HomePage/HomePage.js';
+import CompanyModal from './components/CompanyModal/CompanyModal.js';
 
 function App() {
   const [companies, setCompanies] = useState([]);

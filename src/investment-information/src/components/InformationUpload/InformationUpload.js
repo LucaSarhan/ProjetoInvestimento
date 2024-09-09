@@ -1,5 +1,5 @@
 import React from 'react';
-import { CompanyUploadForm } from '../newCompanyForm/companyUploadForm';
+import { CompanyUploadForm } from '../newCompanyForm/companyUploadForm.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row } from 'react-bootstrap';
 

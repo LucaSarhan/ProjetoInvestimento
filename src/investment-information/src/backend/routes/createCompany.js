@@ -1,8 +1,15 @@
 import express from 'express';
 const router = express.Router();
+import pkg from 'pg';
+
+const { Pool } = pkg; // Destructure Pool from the default import
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+});
 
 // POST route to handle company data
-router.post('/api/company', async (req, res) => {
+router.post('/company', async (req, res) => {
     const {
         companyName,
         intrinsicValue,

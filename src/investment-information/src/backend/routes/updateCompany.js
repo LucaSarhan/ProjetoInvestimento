@@ -1,8 +1,15 @@
 import express from 'express';
 const router = express.Router();
+import pkg from 'pg';
+
+const { Pool } = pkg; // Destructure Pool from the default import
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+});
 
 // Updating a company's information
-router.put('/api/companies/:id', async (req, res) => {
+router.put('/companies/:id', async (req, res) => {
     const { id } = req.params;
     const {
       companyName,
